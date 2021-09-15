@@ -18,7 +18,6 @@ import { default as DBG } from 'debug';
 const debug = DBG('blogs:debug');
 const dbgerror = DBG('blogs:error');
 
-
 // Initialize the express app object
 export const app = express();
 
