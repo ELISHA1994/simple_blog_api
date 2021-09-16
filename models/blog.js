@@ -1,19 +1,13 @@
-import database from "../config/database"
-import cuid from "cuid";
-
-const Blog = database.model('Blog', {
-    _id: { type: String, default: cuid },
-    title: { type: String, required: true },
-    body: { type: String, required: true },
-    createdAt: { type: String, default: new Date().toISOString() },
-    updatedAt: { type: String }
-});
-
-// export async function create(fields) {
-//     const blog = await new Blog(fields)
-//     await blog.save();
-//     return blog;
-// }
+import model from "../config/database";
+import DBG from 'debug';
+const debug = DBG('blogs:blog-model-methods');
+const error = DBG('blogs:error-model-methods');
 
 
-
+export async function create(fields) {
+    const {title, body} = fields;
+    const newBlog = await model.Blog.create({
+        title, body
+    });
+    return newBlog;
+}

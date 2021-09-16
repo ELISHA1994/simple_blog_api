@@ -2,6 +2,7 @@ import * as http from "http";
 import * as path from "path";
 import express from "express";
 import cors from "cors";
+import * as handlers from "./routes/handlers";
 import { default as logger } from "morgan";
 import dotenv from "dotenv/config";
 import { default as rfs } from 'rotating-file-stream';
@@ -27,7 +28,6 @@ app.set('port', port);
 // Middlewares
 app.use(cors());
 app.use(express.json());
-
 app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
     stream: process.env.REQUEST_LOG_FILE ?
         rfs.createStream(process.env.REQUEST_LOG_FILE, {
@@ -39,7 +39,8 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
         : process.stdout
 }));
 
-
+// Blog End-Point
+app.post('/blog', handlers.postBlog);
 
 
 
