@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import * as handlers from "./routes/handlers";
 import { default as logger } from "morgan";
-import dotenv from "dotenv/config";
+// import dotenv from "dotenv/config";
 import { default as rfs } from 'rotating-file-stream';
 import { approotdir } from './approotdir.js';
 const __dirname = approotdir;
@@ -17,7 +17,6 @@ import {
 } from './appsupport.js';
 import { default as DBG } from 'debug';
 const debug = DBG('blogs:debug');
-const dbgerror = DBG('blogs:error');
 
 // Initialize the express app object
 export const app = express();
@@ -40,8 +39,12 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
 }));
 
 // Blog End-Point
-app.post('/blog', handlers.postBlog);
-
+app.post('/blogs', handlers.postBlog);
+app.get('/blogs', handlers.getAllBlogs);
+app.get('/blogs-paginated', handlers.getBlogsPaginated);
+app.get('/blogs/:id', handlers.getBlogPost);
+app.put('/blogs/:id', handlers.updateBlogPost);
+app.delete('/blogs/:id', handlers.deleteBlogPost);
 
 
 // Not Found and Error Middleware
