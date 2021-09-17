@@ -1,4 +1,5 @@
-import * as Blog from "../models/blog"
+import * as Blog from "../models/blog";
+import * as Comment from "../models/comment";
 
 
 
@@ -58,6 +59,61 @@ export async function deleteBlogPost(req, res, next) {
     try {
         const {id} = req.params;
         await Blog.deleteBlog(id);
+        res.json({ success: true});
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+/**
+ * Comment Handlers Functions
+ * @return {Function}
+ */
+
+export async function addCommentHandler(req, res, next) {
+    try {
+        const comment = await Comment.postComment(req.body);
+        res.json(comment);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function getCommentHandler(req, res, next) {
+    try {
+        const { id } = req.params
+        const comment = await Comment.getComment(id);
+        res.json(comment)
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function getBlogPostCommentsHandler(req, res, next) {
+    try {
+        const {BlogId} = req.params;
+        const comments = await Comment.getBlogPostComments(BlogId);
+        res.json(comments);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function updateCommentHandler(req, res, next) {
+    try {
+        const change = req.body;
+        const comment = await Comment.updateComment(req.params.id, change)
+        res.json(comment);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function deleteCommentHandler(req, res, next) {
+    try {
+        const {id} = req.params;
+        await Comment.deleteComment(id);
         res.json({ success: true});
     } catch (err) {
         next(err);

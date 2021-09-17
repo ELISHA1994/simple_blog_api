@@ -46,10 +46,20 @@ app.get('/blogs/:id', handlers.getBlogPost);
 app.put('/blogs/:id', handlers.updateBlogPost);
 app.delete('/blogs/:id', handlers.deleteBlogPost);
 
+// Comment End-Point
+app.post('/add-comments', handlers.addCommentHandler);
+app.get('/get-comment/:id', handlers.getCommentHandler);
+app.get('/get-all-comments-on-blogpost/:BlogId', handlers.getBlogPostCommentsHandler);
+app.put('/update-comments/:id', handlers.updateCommentHandler);
+app.delete('/delete-comments/:id', handlers.deleteCommentHandler);
 
-// Not Found and Error Middleware
-// error handlers
-// catch 404 and forward to error handler
+
+/**
+ * Not Found and Error Middleware
+ * Error Handlers
+ * Catch 404 and forward to error handler
+ * @params {Function}
+ */
 app.use(handle404);
 app.use(basicErrorHandler);
 
