@@ -26,27 +26,27 @@ import SwaggerDoc from './swagger.json';
 // Initialize the express app object
 export const app = express();
 
-const options = {
-    definition: {
-        openapi: "3.0.0",
-        info: {
-            title: "Blog API Documentation",
-            version: "0.1.0",
-            description:
-                "This is a sample CRUD API to be consumed in building blog apps",
-            contact: {
-                name: "Elisha Dutse Bello",
-                email: "elishabello2014@gmail.com",
-            }
-        },
-        servers: [
-            {
-                url: "http://localhost:4000/blogs",
-            },
-        ],
-    },
-    apis: ["./routes/blog.js"]
-};
+// const options = {
+//     definition: {
+//         openapi: "3.0.0",
+//         info: {
+//             title: "Blog API Documentation",
+//             version: "0.1.0",
+//             description:
+//                 "This is a sample CRUD API to be consumed in building blog apps",
+//             contact: {
+//                 name: "Elisha Dutse Bello",
+//                 email: "elishabello2014@gmail.com",
+//             }
+//         },
+//         servers: [
+//             {
+//                 url: "http://localhost:4000/blogs",
+//             },
+//         ],
+//     },
+//     apis: ["./routes/blog.js"]
+// };
 
 // const specs = swaggerJsdoc();
 app.use(

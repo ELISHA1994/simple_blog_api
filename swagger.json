@@ -33,7 +33,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Blogs"
+              "$ref": "#/definitions/BlogRes"
             }
           }
         }
@@ -59,7 +59,7 @@
           "200": {
             "description": "Blog post saved successfully",
             "schema": {
-              "$ref": "#/definitions/Blog"
+              "$ref": "#/definitions/BlogRes"
             }
           }
         }
@@ -90,7 +90,7 @@
           "200": {
             "description": "Blog Post is updated successfully",
             "schema": {
-              "$ref": "#/definitions/Blog"
+              "$ref": "#/definitions/BlogRes"
             }
           }
         }
@@ -139,7 +139,7 @@
           "200": {
             "description": "Ok",
             "schema": {
-              "$ref": "#/definitions/Comment"
+              "$ref": "#/definitions/CommentRes"
             }
           }
         }
@@ -163,7 +163,7 @@
           "200": {
             "description": "Ok",
             "schema": {
-              "$ref": "#/definitions/Comment"
+              "$ref": "#/definitions/CommentRes"
             }
           }
         }
@@ -217,7 +217,7 @@
           "200": {
             "description": "Comment is updated successfully",
             "schema": {
-              "$ref": "#/definitions/Comment"
+              "$ref": "#/definitions/CommentRes"
             }
           }
         }
@@ -259,9 +259,29 @@
         }
       }
     },
+    "BlogRes": {
+      "required": ["id","title", "body", "createdAt", "updatedAt"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
     "Blogs": {
       "type": "array",
-      "$ref": "#/definitions/Blog"
+      "$ref": "#/definitions/BlogRes"
     },
     "Comment": {
       "required": ["description", "BlogId"],
@@ -274,9 +294,40 @@
         }
       }
     },
+    "CommentArray": {
+      "required": ["description", "id"],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        }
+      }
+    },
+    "CommentRes": {
+      "required": ["id", "description", "BlogId", "updatedAt", "createdAt"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "BlogId": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
     "Comments": {
       "type": "array",
-      "$ref": "#/definitions/Comment"
+      "$ref": "#/definitions/CommentArray"
     },
     "Success": {
       "required": ["success"],
