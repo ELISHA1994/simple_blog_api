@@ -6,7 +6,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=blogs:* SEQUELIZE_CONNECT=config/sequelize-mysql.yaml nodemon --experimental-modules --es-module-specifier-resolution=node  --trace-warnings ./app.js",
+    "start": "DEBUG=blogs:* SEQUELIZE_CONNECT=config/sequelize-mysql.yaml node --experimental-modules --es-module-specifier-resolution=node  --trace-warnings ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
