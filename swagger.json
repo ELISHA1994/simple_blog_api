@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://simpleblogap.herokuapp.com/",
+  "host": "https://simpleblogap.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
