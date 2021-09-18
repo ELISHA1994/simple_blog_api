@@ -1,4 +1,4 @@
-import model from "../config/database";
+import model from "../config/database.js";
 
 export async function postComment(fields) {
     const {description, BlogId} = fields;

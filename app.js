@@ -2,7 +2,7 @@ import * as http from "http";
 import * as path from "path";
 import express from "express";
 import cors from "cors";
-import * as handlers from "./routes/handlers";
+import * as handlers from "./routes/handlers.js";
 import { default as logger } from "morgan";
 // import dotenv from "dotenv/config";
 import { default as rfs } from 'rotating-file-stream';
@@ -18,9 +18,9 @@ import {
 import { default as DBG } from 'debug';
 const debug = DBG('blogs:debug');
 
-import swaggerJsdoc from 'swagger-jsdoc'
-import swaggerUi from 'swagger-ui-express'
-import SwaggerDoc from './swagger.json'
+import swaggerUi from 'swagger-ui-express';
+// import * as SwaggerDoc from './swagger.json';
+import config from './config/config.js';
 
 
 // Initialize the express app object
@@ -52,11 +52,11 @@ const options = {
 app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(SwaggerDoc, { explorer: true })
+    swaggerUi.setup(config, { explorer: true })
 );
 
 
-export const port = normalizePort(process.env.PORT || '4000');
+export const port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
 
 // Middlewares
