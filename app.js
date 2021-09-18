@@ -19,7 +19,7 @@ import { default as DBG } from 'debug';
 const debug = DBG('blogs:debug');
 
 import swaggerUi from 'swagger-ui-express';
-import * as SwaggerDoc from './swagger.json';
+import SwaggerDoc from './swagger.json';
 // import config from './config/config.js';
 
 
