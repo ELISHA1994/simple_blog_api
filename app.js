@@ -73,6 +73,7 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
         : process.stdout
 }));
 
+// Health Check Route
 app.get('/status', function (req, res, net) {
     return res.status(200).json({ msg: 'Server is up and running !'})
 })

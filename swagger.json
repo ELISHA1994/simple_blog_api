@@ -15,6 +15,10 @@
     {
       "name": "Blogs",
       "description": "API for blogs in the system"
+    },
+    {
+      "name": "Comments",
+      "description": "API for comments"
     }
   ],
   "schemes": ["https"],
@@ -109,7 +113,134 @@
           "200": {
             "description": "Blog Post is deleted successfully",
             "schema": {
-              "$ref": "#/definitions/Blog"
+              "$ref": "#/definitions/Success"
+            }
+          }
+        }
+      }
+    },
+    "/add-comments": {
+      "post": {
+        "tags": ["Comments"],
+        "description": "Create a new comment in the system",
+        "summary": "Create a new comment in the system",
+        "parameters": [
+          {
+            "name": "comment",
+            "in": "body",
+            "description": "The Comment to be posted",
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        }
+      }
+    },
+    "/get-comment/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id of the comment we want to get",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "summary": "Get Comment with the given id",
+        "description": "Get a comment in the system with the given id",
+        "tags": ["Comments"],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        }
+      }
+    },
+    "/get-all-comments-on-blogpost/{BlogId}": {
+      "parameters": [
+        {
+          "name": "BlogId",
+          "in": "path",
+          "required": true,
+          "description": "id of the blog whose comments we want to retrieve",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Comments"],
+        "summary": "Retrieves all comment on a blog post in the system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Comments"
+            }
+          }
+        }
+      }
+    },
+    "/update-comments/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id of the comment post we want to update",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary": "Update Comment with the given id",
+        "tags": ["Comments"],
+        "parameters": [{
+          "name": "comment",
+          "in": "body",
+          "description": "Comment including update",
+          "schema": {
+            "$ref": "#/definitions/Comment"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "Comment is updated successfully",
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        }
+      }
+    },
+    "/delete-comments/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id of the blog post we want to delete",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "summary": "Delete comment with current id",
+        "tags": ["Comments"],
+        "responses": {
+          "200": {
+            "description": "Comment is deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/Success"
             }
           }
         }
@@ -131,6 +262,29 @@
     "Blogs": {
       "type": "array",
       "$ref": "#/definitions/Blog"
+    },
+    "Comment": {
+      "required": ["description", "BlogId"],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "BlogId": {
+          "type": "integer"
+        }
+      }
+    },
+    "Comments": {
+      "type": "array",
+      "$ref": "#/definitions/Comment"
+    },
+    "Success": {
+      "required": ["success"],
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
     }
   }
 }
