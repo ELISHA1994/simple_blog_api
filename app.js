@@ -18,10 +18,45 @@ import {
 import { default as DBG } from 'debug';
 const debug = DBG('blogs:debug');
 
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
+import SwaggerDoc from './swagger.json'
+
+
 // Initialize the express app object
 export const app = express();
 
-export const port = normalizePort(process.env.PORT || '3000');
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Blog API Documentation",
+            version: "0.1.0",
+            description:
+                "This is a sample CRUD API to be consumed in building blog apps",
+            contact: {
+                name: "Elisha Dutse Bello",
+                email: "elishabello2014@gmail.com",
+            }
+        },
+        servers: [
+            {
+                url: "http://localhost:4000/blogs",
+            },
+        ],
+    },
+    apis: ["./routes/blog.js"]
+};
+
+// const specs = swaggerJsdoc();
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(SwaggerDoc, { explorer: true })
+);
+
+
+export const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
 // Middlewares
@@ -38,12 +73,16 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
         : process.stdout
 }));
 
+app.get('/status', function (req, res, net) {
+    return res.status(200).json({ msg: 'Server is up and running !'})
+})
+
 // Blog End-Point
-app.post('/blogs', handlers.postBlog);
+app.post('/blog', handlers.postBlog);
 app.get('/blogs', handlers.getAllBlogs);
 app.get('/blogs-paginated', handlers.getBlogsPaginated);
 app.get('/blogs/:id', handlers.getBlogPost);
-app.put('/blogs/:id', handlers.updateBlogPost);
+app.put('/blog/:id', handlers.updateBlogPost);
 app.delete('/blogs/:id', handlers.deleteBlogPost);
 
 // Comment End-Point
