@@ -1,0 +1,6 @@
+dbname: blogs
+username:
+password:
+params:
+  dialect: sqlite
+  storage: blogs-testdb-sequelize.sqlite3

@@ -4,7 +4,6 @@ import express from "express";
 import cors from "cors";
 import * as handlers from "./routes/handlers.js";
 import { default as logger } from "morgan";
-// import dotenv from "dotenv/config";
 import { default as rfs } from 'rotating-file-stream';
 import { approotdir } from './approotdir.js';
 const __dirname = approotdir;
@@ -20,35 +19,11 @@ const debug = DBG('blogs:debug');
 
 import swaggerUi from 'swagger-ui-express';
 import SwaggerDoc from './swagger.json';
-// import config from './config/config.js';
 
 
 // Initialize the express app object
 export const app = express();
 
-// const options = {
-//     definition: {
-//         openapi: "3.0.0",
-//         info: {
-//             title: "Blog API Documentation",
-//             version: "0.1.0",
-//             description:
-//                 "This is a sample CRUD API to be consumed in building blog apps",
-//             contact: {
-//                 name: "Elisha Dutse Bello",
-//                 email: "elishabello2014@gmail.com",
-//             }
-//         },
-//         servers: [
-//             {
-//                 url: "http://localhost:4000/blogs",
-//             },
-//         ],
-//     },
-//     apis: ["./routes/blog.js"]
-// };
-
-// const specs = swaggerJsdoc();
 app.use(
     "/api-docs",
     swaggerUi.serve,
