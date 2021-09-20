@@ -10,7 +10,7 @@
   <a href="https://github.com/ELISHA1994/simple_blog_api">
     <img
       alt="GitHub Repo for simple blog post restful API"
-      src="https://github.com/ELISHA1994/simple_blog_api/image"
+      src="https://github.com/ELISHA1994/simple_blog_api/image.jpeg?raw=true"
     />
   </a>
 </div>

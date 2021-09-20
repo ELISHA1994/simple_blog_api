@@ -41,11 +41,12 @@ async function connectDB() {
             params.dbname,
             params.username,
             params.password,
-            params.params
+            params.params,
+            {logging: false}
         );
 
         try {
-            await sequelize.authenticate();
+            await sequelize.authenticate({logging: false});
             log('Database Connection Established');
         } catch (err) {
             error('Unable to establish database connection', err);
@@ -88,8 +89,9 @@ model.Blog.hasMany(model.Comment, { onDelete: 'CASCADE' });
 model.Comment.belongsTo(model.Blog);
 
 // comment this for first server run
-sequelize.sync({ alter: true });
+// sequelize.sync({ alter: true });
 
-export default model
+export default model;
+export { sequelize };
 
 
