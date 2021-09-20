@@ -87,8 +87,8 @@ model.Comment = Comment;
 model.Blog.hasMany(model.Comment, { onDelete: 'CASCADE' });
 model.Comment.belongsTo(model.Blog);
 
-// uncomment this for first server run
-// sequelize.sync({ alter: true });
+// comment this for first server run
+sequelize.sync({ alter: true });
 
 export default model
 
