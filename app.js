@@ -20,16 +20,8 @@ const debug = DBG('blogs:debug');
 import swaggerUi from 'swagger-ui-express';
 import SwaggerDoc from './swagger.json';
 
-
 // Initialize the express app object
 export const app = express();
-
-app.use(
-    "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(SwaggerDoc, { explorer: true })
-);
-
 
 export const port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
@@ -47,6 +39,11 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev',  {
         })
         : process.stdout
 }));
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(SwaggerDoc, { explorer: true })
+);
 
 // Health Check Route
 app.get('/status', function (req, res, net) {
