@@ -55,11 +55,10 @@ If you get any errors, please read through them and see if you can find out what
 the problem is. 
 
 If you can't get the setup script to work, then just make sure you have the
-right versions of the requirements listed above, and run the following commands:
+right versions of the requirements listed above, and run the following command:
 
 ```
 npm install
-npm run validate
 ```
 
 
@@ -78,18 +77,6 @@ You can also open the production deployment:
 
 You can also visit the api documentation in the link below:
 [simpleblogap.documentation](https://simpleblogap.herokuapp.com/api-docs/#/).
-
-## Running the tests
-
-```shell
-npm test
-```
-
-This will start [Jest](https://jestjs.io/) in watch mode. Read the output and
-play around with it. The tests are there to help you reach the final version,
-however _sometimes_ you can accomplish the task and the tests still fail if you
-implement things differently than I do in my solution, so don't look to them as
-a complete authority.
 
 ### App Data Model
 
