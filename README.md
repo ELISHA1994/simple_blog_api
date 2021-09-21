@@ -78,6 +78,15 @@ You can also open the production deployment:
 You can also visit the api documentation in the link below:
 [simpleblogap.documentation](https://simpleblogap.herokuapp.com/api-docs/#/).
 
+## Running the tests
+
+```shell
+npm test
+```
+
+This will start [Jest](https://jestjs.io/) in watch mode. Read the output and
+play around with it.
+
 ### App Data Model
 
 - Blog

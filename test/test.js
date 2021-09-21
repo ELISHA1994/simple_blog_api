@@ -3,6 +3,12 @@ import {sequelize} from "../config/database";
 import supertest from 'supertest';
 const request = supertest(server);
 
+afterAll((done) => {
+    server.close(() => {
+        done();
+    });
+});
+
 describe('Blog Post Endpoint Test', function () {
     beforeAll(async () => {
         await sequelize.sync({

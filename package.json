@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG=blogs:* SEQUELIZE_CONNECT=config/sequelize-sqlite.yaml node --experimental-modules --es-module-specifier-resolution=node  --trace-warnings ./app.js",
-    "test": "cross-env SEQUELIZE_CONNECT=config/sequelize-testdb.yaml node --experimental-vm-modules node_modules/.bin/jest --detectOpenHandles --testTimeout=20000"
+    "test": "cross-env SEQUELIZE_CONNECT=config/sequelize-testdb.yaml node --experimental-vm-modules node_modules/.bin/jest --watch --testTimeout=10000"
   },
   "keywords": [],
   "author": "",
